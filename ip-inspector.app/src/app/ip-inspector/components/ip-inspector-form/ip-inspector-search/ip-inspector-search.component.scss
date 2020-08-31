@@ -1,0 +1,47 @@
+hr {
+  width: 100%;
+  height: 1px;
+  background-color: lightgray;
+  border: none;
+}
+
+.query-type {
+  margin-bottom: 1.34375em;
+}
+
+.ip-field, .domain-field {
+  width: 80%;
+}
+
+.ip-query {
+  padding-bottom: 1.34375em;
+  button {
+    height: 50px;
+  }
+}
+
+.services-title {
+  display: flex;
+  > span {
+    flex: 1;
+  }
+}
+
+.service {
+  display: flex;
+  margin-bottom: 10px;
+
+  .service-selected {
+    margin: 0 20px 0 0;
+  }
+
+  .service-label {
+    position: relative;
+    top: 2px;
+    cursor: pointer;
+
+    &.service-label-selected {
+      font-weight: 500;
+    }
+  }
+}

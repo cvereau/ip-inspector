@@ -1,0 +1,56 @@
+<mat-button-toggle-group
+  #queryType="matButtonToggleGroup"
+  class="query-type"
+  value="IP"
+  (change)="onQueryTypeChange($event)"
+>
+  <mat-button-toggle value="IP" aria-label="IP"> IP </mat-button-toggle>
+  <mat-button-toggle value="Domain" aria-label="Domain"> Domain </mat-button-toggle>
+</mat-button-toggle-group>
+
+<div fxLayout="row" fxLayoutGap="20px">
+  <div fxFlex="70">
+    <mat-form-field appearance="fill" class="ip-field" *ngIf="queryType.value === 'IP'">
+      <mat-label>{{ queryType.value }}</mat-label>
+      <input matInput mask="IP" [formControl]="ipInput" [dropSpecialCharacters]="false" autofocus />
+      <mat-error *ngIf="ipInput.invalid">Enter a valid IP</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="domain-field" *ngIf="queryType.value === 'Domain'">
+      <mat-label>{{ queryType.value }}</mat-label>
+      <input matInput [formControl]="domainInput" autofocus />
+      <mat-error *ngIf="domainInput.invalid">Enter a valid Domain</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div fxFlex="30" fxLayoutAlign="end center" class="ip-query">
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!isQueryTypeStateNotEmpty(queryType)"
+      (click)="queryIp(queryType)"
+    >
+      <mat-icon>send</mat-icon> Query
+    </button>
+  </div>
+</div>
+
+<hr />
+
+<h2 class="services-title">Services Available</h2>
+
+<mat-card *ngFor="let service of services" class="service">
+  <mat-checkbox
+    class="service-done"
+    [checked]="service.selected"
+    (change)="onToggleService(service, queryType)"
+    [disabled]="service.name === 'ReverseDNS' && queryType.value === 'Domain'"
+    color="primary"
+  ></mat-checkbox>
+  <span
+    class="service-label"
+    [ngClass]="{ 'service-label-selected': service.selected }"
+    (click)="onToggleService(service, queryType)"
+  >
+    &nbsp;{{ service.name }} {{ service.name === 'ReverseDNS' ? '(only for IP)' : '' }}&nbsp;
+  </span>
+</mat-card>

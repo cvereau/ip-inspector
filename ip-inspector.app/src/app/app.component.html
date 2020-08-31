@@ -1,0 +1,13 @@
+<mat-toolbar>
+  <span class="title">IP - Inspector</span> 
+  <small class="dev">developed by</small> 
+  <span class="logo">    
+    <img [src]="logo" [alt]="logo" height="30" />
+  </span>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="goToGithubRepo()">
+    <mat-icon><fa-icon [icon]="['fab', 'github']"></fa-icon></mat-icon>
+  </button>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

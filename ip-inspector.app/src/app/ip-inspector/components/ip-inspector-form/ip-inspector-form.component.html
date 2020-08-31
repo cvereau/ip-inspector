@@ -1,0 +1,9 @@
+<div class="ip-inspector-wrapper" fxLayout="row" fxLayoutGap="20px">
+  <div class="ip-inspector-search" fxFlex="50">
+    <app-ip-inspector-search (inspectQuery)="inspectQueryEvent($event)"></app-ip-inspector-search>
+  </div>
+
+  <div class="ip-inspector-results" fxFlex="50">
+    <app-ip-inspector-results [queryEvent]="queryEvent"></app-ip-inspector-results>
+  </div>
+</div>

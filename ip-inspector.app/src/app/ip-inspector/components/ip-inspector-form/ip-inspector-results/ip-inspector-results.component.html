@@ -1,0 +1,12 @@
+<div *ngIf="results.length; else singleResult">
+  <div *ngFor="let result of results" class="results-container">
+    <span class="service-title" *ngIf="result.service.length > 0">{{ result.service }}</span>
+    <pre>{{ result.res | json }}</pre>
+  </div>
+</div>
+<ng-template #singleResult>
+  <div class="results-container">
+    <span class="service-title" *ngIf="results.service.length > 0">{{ results.service }}</span>
+    <pre>{{ results.res | json }}</pre>    
+  </div>
+</ng-template>
